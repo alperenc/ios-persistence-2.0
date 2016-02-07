@@ -26,6 +26,9 @@ class PlaySoundsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Load slider position from user defaults
+        sliderView.value = NSUserDefaults.standardUserDefaults().floatForKey(SliderValueKey)
+        
         do {
             audioPlayer = try AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl)
         } catch _ {
@@ -50,6 +53,9 @@ class PlaySoundsViewController: UIViewController {
     }
 
     @IBAction func playAudio(sender: UIButton) {
+        
+        // Save slider position to user defaults
+        NSUserDefaults.standardUserDefaults().setFloat(sliderView.value, forKey: SliderValueKey)
         
         // Get the pitch from the slider
         let pitch = sliderView.value
