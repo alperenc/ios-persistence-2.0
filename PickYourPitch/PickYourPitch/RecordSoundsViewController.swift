@@ -36,6 +36,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         
         // Segue to sound player if a recording exists from previous runs of the app
         if shouldSegueToSoundPlayer {
+            shouldSegueToSoundPlayer = false
             performSegueWithIdentifier("stopRecording", sender: self)
         }
     }
