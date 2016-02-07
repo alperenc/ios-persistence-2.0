@@ -21,12 +21,23 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Check if a previous recording exists
+        if NSFileManager.defaultManager().fileExistsAtPath(audioFileURL().path!) {
+            print("The file already exists!")
+            shouldSegueToSoundPlayer = true
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
         //Hide the stop button
         stopButton.hidden = true
         recordButton.enabled = true
+        
+        // Segue to sound player if a recording exists from previous runs of the app
+        if shouldSegueToSoundPlayer {
+            performSegueWithIdentifier("stopRecording", sender: self)
+        }
     }
 
     @IBAction func recordAudio(sender: UIButton) {
@@ -70,8 +81,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
 
         if flag {
-            let path = audioFileURL()
-            recordedAudio = RecordedAudio(filePathUrl: path, title: path.pathExtension)
             self.performSegueWithIdentifier("stopRecording", sender: self)
         } else {
             print("Recording was not successful")
@@ -83,6 +92,9 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
         if segue.identifier == "stopRecording" {
+            let pathUrl = audioFileURL()
+            recordedAudio = RecordedAudio(filePathUrl: pathUrl, title: pathUrl.pathExtension)
+            
             let playSoundsVC:PlaySoundsViewController = segue.destinationViewController as! PlaySoundsViewController
             let data = recordedAudio
             playSoundsVC.receivedAudio = data
