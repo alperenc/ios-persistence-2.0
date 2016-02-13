@@ -25,6 +25,8 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        actors = fetchAllActors()
+        
         tableView.reloadData()
     }
     
