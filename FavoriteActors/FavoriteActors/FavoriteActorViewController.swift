@@ -85,7 +85,26 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
                 if a.id == newActor.id {
                     return
                 }
-            }            
+            }
+            
+            // Create a dictionary from the actor. Careful, the imagePath can be nil.
+            var dictionary = [String : AnyObject]()
+            dictionary[Person.Keys.ID] = newActor.id
+            dictionary[Person.Keys.Name] = newActor.name
+            
+            if let imagePath = newActor.imagePath {
+                dictionary[Person.Keys.ProfilePath] = imagePath
+            }
+            
+            // Insert the actor on the main thread
+            dispatch_async(dispatch_get_main_queue()) {
+                // Init the Person, using the shared Context
+                let actorToBeAdded = Person(dictionary: dictionary, context: self.sharedContext)
+                try! self.sharedContext.save()
+                
+                // Append the actor to the array
+                self.actors.append(actorToBeAdded)
+            }
         }
     }
     
