@@ -40,11 +40,11 @@ class MovieListViewController : UITableViewController {
                         
                         // Parse the array of movies dictionaries
                         _ = moviesDictionaries.map() { (dictionary: [String : AnyObject]) -> Movie in
-                            let movie = Movie(dictionary: dictionary)
+                            let movie = Movie(dictionary: dictionary, context: self.sharedContext)
                             
                             // We associate this movie with it's actor by appending it to the array
                             // In core data we use the relationship. We set the movie's actor property
-                            self.actor.movies.append(movie)
+                            movie.actor = self.actor
                             
                             return movie
                         }
@@ -61,6 +61,11 @@ class MovieListViewController : UITableViewController {
             }
         }
     }
+    
+    // MARK: Core Data Convenience
+    lazy var sharedContext: NSManagedObjectContext = {
+        return CoreDataStackManager.sharedInstance().managedObjectContext
+    }()
     
     
     // MARK: - Table View
@@ -136,7 +141,9 @@ class MovieListViewController : UITableViewController {
         
         switch (editingStyle) {
         case .Delete:
-            actor.movies.removeAtIndex(indexPath.row)
+            let movie = actor.movies[indexPath.row]
+            movie.actor = nil
+            
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         default:
             break

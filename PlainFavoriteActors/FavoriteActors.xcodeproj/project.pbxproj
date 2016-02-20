@@ -23,6 +23,8 @@
 		4DBBE6F91A7D72C100347323 /* TheMovieDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBE6F41A7D72C100347323 /* TheMovieDB.swift */; };
 		4DBBE6FB1A7D72EF00347323 /* ActorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBE6FA1A7D72EF00347323 /* ActorPickerViewController.swift */; };
 		4DBBE6FD1A7D742B00347323 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBE6FC1A7D742B00347323 /* Config.swift */; };
+		C7F5B3E11C708C2B00F3AEE3 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F5B3E01C708C2B00F3AEE3 /* CoreDataStackManager.swift */; };
+		C7F5B3E41C70930E00F3AEE3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C7F5B3E21C70930E00F3AEE3 /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		4DBBE6F41A7D72C100347323 /* TheMovieDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheMovieDB.swift; sourceTree = "<group>"; };
 		4DBBE6FA1A7D72EF00347323 /* ActorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActorPickerViewController.swift; sourceTree = "<group>"; };
 		4DBBE6FC1A7D742B00347323 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Config.swift; path = ../Config.swift; sourceTree = "<group>"; };
+		C7F5B3E01C708C2B00F3AEE3 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
+		C7F5B3E31C70930E00F3AEE3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 				4D91218B1A8033C0007A236F /* ActorTableViewCell.swift */,
 				4DBBE6EF1A7D72C100347323 /* TheMovieDB */,
 				4DBBE6CE1A7D726900347323 /* AppDelegate.swift */,
+				C7F5B3E01C708C2B00F3AEE3 /* CoreDataStackManager.swift */,
+				C7F5B3E21C70930E00F3AEE3 /* Model.xcdatamodeld */,
 				4DBBE6D21A7D726900347323 /* Main.storyboard */,
 				4DBBE6D51A7D726900347323 /* Images.xcassets */,
 				4DBBE6D71A7D726900347323 /* LaunchScreen.xib */,
@@ -254,12 +260,14 @@
 				4DBBE6FB1A7D72EF00347323 /* ActorPickerViewController.swift in Sources */,
 				4D52082D1A7DB5610060A4B0 /* MovieListViewController.swift in Sources */,
 				4D91218C1A8033C0007A236F /* ActorTableViewCell.swift in Sources */,
+				C7F5B3E41C70930E00F3AEE3 /* Model.xcdatamodeld in Sources */,
 				4DBBE6FD1A7D742B00347323 /* Config.swift in Sources */,
 				4DBBE6CF1A7D726900347323 /* AppDelegate.swift in Sources */,
 				4DBBE6F71A7D72C100347323 /* TheMovieDB-Constants.swift in Sources */,
 				4D52082B1A7DACDA0060A4B0 /* FavoriteActorViewController.swift in Sources */,
 				4DBBE6F91A7D72C100347323 /* TheMovieDB.swift in Sources */,
 				4DBBE6F61A7D72C100347323 /* Person.swift in Sources */,
+				C7F5B3E11C708C2B00F3AEE3 /* CoreDataStackManager.swift in Sources */,
 				4D52082F1A7DC53C0060A4B0 /* ImageCache.swift in Sources */,
 				4D91218A1A7DDAB1007A236F /* TaskCancelingTableViewCell.swift in Sources */,
 				4DBBE6F51A7D72C100347323 /* Movie.swift in Sources */,
@@ -471,6 +479,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C7F5B3E21C70930E00F3AEE3 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C7F5B3E31C70930E00F3AEE3 /* Model.xcdatamodel */,
+			);
+			currentVersion = C7F5B3E31C70930E00F3AEE3 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4DBBE6C11A7D726900347323 /* Project object */;
 }
