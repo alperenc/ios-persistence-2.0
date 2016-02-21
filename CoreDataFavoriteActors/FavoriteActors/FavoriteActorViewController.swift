@@ -109,7 +109,7 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
             ]
             
             // Now we create a new Person, using the shared Context
-            // let actorToBeAdded = Person(dictionary: dictionary, context: sharedContext)
+            let _ = Person(dictionary: dictionary, context: sharedContext)
 
             // Step 3: Do not add actors to the actors array.
             // This is no longer necessary once we are modifying our table through the
