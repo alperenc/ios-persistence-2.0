@@ -86,19 +86,26 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         } ()
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        print("Will change content.")
+        tableView.beginUpdates()
     }
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        print("Did change object")
+        switch type {
+        case .Insert:
+            tableView.insertRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+        case .Delete:
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+        default:
+            return
+        }
     }
     
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-        print("Did change section")
+        // We don't need this since we are not using sections
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        print("Did change content")
+        tableView.endUpdates()
     }
     
     
