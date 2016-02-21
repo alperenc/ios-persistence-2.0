@@ -20,7 +20,7 @@ import CoreData
 * of changes to the data
 */
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     // Notice that an array of events is conspiciously missing.
     
@@ -78,10 +78,28 @@ class MasterViewController: UITableViewController {
             
             // Create the Fetched Results Controller
             let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.sharedContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+            fetchedResultsController.delegate = self
             
             // Return the fetched results controller. It will be the value of the lazy variable
             return fetchedResultsController
         } ()
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        print("Will change content.")
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        print("Did change object")
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+        print("Did change section")
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        print("Did change content")
+    }
     
     
     // MARK: - Table View
